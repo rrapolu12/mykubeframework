@@ -1,0 +1,21 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  namespace: dev-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-deploy-label
+      type: frontend-deploy-label
+  template:
+    metadata:
+      labels:
+        app: nginx-deploy-label
+        type: frontend-deploy-label
+    spec:
+      containers:
+      - name: nginx-deploy-container
+        image: nginx
